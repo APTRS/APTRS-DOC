@@ -1,0 +1,65 @@
+site_name: APTRS Docs
+theme:
+  name: material
+  logo: https://i.ibb.co/BsfwzSf/download.png
+  favicon: https://i.ibb.co/LY6gbtW/android-chrome-512x512.png
+  features:
+    - navigation.tabs
+    - navigation.tabs.sticky
+    - navigation.path
+    - navigation.sections
+    - navigation.tracking
+    - navigation.instant
+    - navigation.indexes 
+    - toc.follow
+    - content.tabs.link
+  palette:
+
+
+    # Palette toggle for light mode
+    - media: "(prefers-color-scheme: light)"
+      scheme: default 
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+
+    # Palette toggle for dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      toggle:
+        icon: material/brightness-4
+        name: Switch to system preference
+
+nav:
+    - Home: index.md
+    - Prerequisites: Prerequisites.md
+    - Installation: installation.md
+    - Running APTRS Server: Running.md
+    - Company: Company.
+    - Customer: Customer.md
+    - Vulnerability Database: Vulnerability-Database.md
+    - Setting: Setting.md
+    - Project: Project.md
+    - Report Template: Report-Template.md
+    
+
+markdown_extensions:
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
+  - def_list
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
+      slugify: !!python/object/apply:pymdownx.slugs.slugify
+        kwds:
+          case: lower
+
+extra:
+  version:
+    provider: mike
+
+repo_url: https://github.com/Anof-cyber/APTRS
+repo_name: Anof-cyber/APTRS
