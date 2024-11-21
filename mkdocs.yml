@@ -4,15 +4,19 @@ theme:
   logo: https://i.ibb.co/BsfwzSf/download.png
   favicon: https://i.ibb.co/LY6gbtW/android-chrome-512x512.png
   features:
+    - toc.integrate 
+    - toc.follow
+    - navigation.path
+    - navigation.indexes
     - navigation.tabs
     - navigation.tabs.sticky
     - navigation.path
+    - search.suggest
     - navigation.sections
     - navigation.tracking
     - navigation.instant
-    - navigation.indexes 
-    - toc.follow
     - content.tabs.link
+
   palette:
 
 
@@ -30,17 +34,62 @@ theme:
         icon: material/brightness-4
         name: Switch to system preference
 
+plugins:
+   - glightbox
+   - search:
+      enabled: true
+
 nav:
-    - Home: index.md
-    - Prerequisites: Prerequisites.md
-    - Installation: installation.md
-    - Running APTRS Server: Running.md
-    - Company: Company.md
-    - Customer: Customer.md
-    - Vulnerability Database: Vulnerability-Database.md
-    - Setting: Setting.md
-    - Project: Project.md
-    - Report Template: Report-Template.md
+  - Getting Started:
+    - index.md 
+    - Features: getting-started/Features.md
+    - Project Contribution: getting-started/Contribution.md
+    - Sponsors: getting-started/Sponsors.md
+    - Demo: getting-started/demo.md
+    - License: getting-started/license.md
+  - Installation:
+    - installation/install.md
+    - Docker: installation/docker.md
+    - Manual: installation/manual.md
+    - Environment Variables: installation/env.md
+    - Frontend: installation/frontend.md
+    - Secure Certificate: installation/certificate.md
+  - Features:
+    - Features/index.md
+    - Dashboard: Features/dashboard/dashboard.md
+    - Users: Features/Users/users.md
+    - Company: Features/company/company.md
+    - Customer: Features/company/customer.md
+    - Groups and Permissions: Features/permission/permission.md
+    - Vulnerability DB: Features/vulnerabilityDB/vulnerability.md
+    - Configuration: Features/configuration/configuration.md
+    - Project:
+      - Project View: Features/project/project-view.md
+      - Project Vulnerability: Features/project/Vulnerability.md
+      - Project Scope: Features/project/scope.md
+      - Project Retest: Features/project/retest.md
+      - Project Report: Features/project/report.md
+  - Report Customization: 
+    - PDF: 
+      - custom-report/pdf/pdf.md
+      - Context Variable: custom-report/pdf/context-variable.md
+      - Project: custom-report/pdf/project.md
+      - Vulnerability: custom-report/pdf/vulnerability.md
+      - Company User: custom-report/pdf/company-user.md
+      - Project Scope: custom-report/pdf/scope.md
+      - Project Retest: custom-report/pdf/retest.md
+      - Additional: custom-report/pdf/other.md
+    - DOCX:
+      - custom-report/docx/docx.md
+      - Project: custom-report/docx/project.md
+      - Vulnerability: custom-report/docx/vulnerability.md
+      - Company User: custom-report/docx/company-user.md
+      - Project Scope: custom-report/docx/scope.md
+      - Project Retest: custom-report/docx/retest.md
+      - Additional: custom-report/docx/other.md
+  - API Documentation: API.md
+  - Change Log: https://github.com/APTRS/APTRS-Changelog/blob/main/README.md" target="_blank
+  
     
 
 markdown_extensions:
@@ -48,6 +97,7 @@ markdown_extensions:
   - pymdownx.details
   - pymdownx.superfences
   - def_list
+  - tables
   - pymdownx.tasklist:
       custom_checkbox: true
   - pymdownx.superfences
@@ -56,10 +106,36 @@ markdown_extensions:
       slugify: !!python/object/apply:pymdownx.slugs.slugify
         kwds:
           case: lower
-
+  - pymdownx.highlight:
+      pygments_lang_class: true
+      auto_title: true
+      line_spans: __span
+  - pymdownx.critic
+  - pymdownx.caret
+  - pymdownx.keys
+  - pymdownx.mark
+      
+      
 extra:
   version:
     provider: mike
+  social:
+    - icon: fontawesome/brands/twitter 
+      link: https://twitter.com/ano_f_
+    - icon: fontawesome/brands/github 
+      link: https://github.com/Anof-cyber/
+    - icon: fontawesome/brands/linkedin
+      link: https://www.linkedin.com/in/sourav-kalal
+    - icon: fontawesome/brands/medium 
+      link: https://medium.com/@Ano_F_
+      
+extra_javascript:
+  - https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.2/highlight.min.js
+  - https://cdnjs.cloudflare.com/ajax/libs/prism/9000.0.1/prism.min.js
+  
+extra_css:
+  - https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.2/styles/default.min.css
+  - https://cdnjs.cloudflare.com/ajax/libs/prism/9000.0.1/themes/prism-dark.min.css
 
-repo_url: https://github.com/Anof-cyber/APTRS
-repo_name: Anof-cyber/APTRS
+repo_url: https://github.com/APTRS/APTRS
+repo_name: APTRS/APTRS

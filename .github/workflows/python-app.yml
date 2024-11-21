@@ -22,7 +22,8 @@ jobs:
       - run: |
             pip install mkdocs-material
             pip install mike
+            pip install mkdocs-glightbox
             git config --global user.email "action@github.com"
             git config --global user.name 'Actions'
 
-      - run: mike deploy --push --update-aliases 0.1 latest
+      - run: mike deploy --push --update-aliases 1.0 latest
