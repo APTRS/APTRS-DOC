@@ -1732,7 +1732,7 @@
 <th>ENV</th>
 <th>Description</th>
 <th>Docker</th>
-<th>Linux Server Setup</th>
+<th>Linux Server Manual Setup</th>
 </tr>
 </thead>
 <tbody>
@@ -1740,31 +1740,31 @@
 <td><code>SECRET_KEY</code></td>
 <td>This key is used by Backend including JWT, Should be secured and random.</td>
 <td>Manually need to be updated in env file</td>
-<td>Auto Generated no need to update it.</td>
+<td>Manually need to be updated in env file</td>
 </tr>
 <tr>
 <td><code>WHITELIST_IP</code></td>
 <td>This allows to set whitelisted IP/domain with port number to allow loading resource during PDF report to prevent SSRF vulnerability.</td>
-<td>Manually need to be updated in env file</td>
-<td>Auto Generated but Manually need to be updated in env file based on your domain name, IP etc.</td>
+<td>Manually need to be updated in env file, make sure to keep the <code>https://nginx</code> as its required to connect with nginx within Docker</td>
+<td>Manually need to be updated in env file based on your domain name, IP etc.</td>
 </tr>
 <tr>
 <td><code>ALLOWED_HOST</code></td>
 <td>Whitelist allowed host to prevent host header injection attack</td>
 <td>Manually need to be updated in env file</td>
-<td>Auto Generated but Manually need to be updated in env file based on your domain name, IP etc.</td>
+<td>Manually need to be updated in env file based on your domain name, IP etc.</td>
 </tr>
 <tr>
 <td><code>CORS_ORIGIN</code></td>
 <td>Whitelist allowed origin to prevent cross origin attack</td>
 <td>Manually need to be updated in env file</td>
-<td>Auto Generated but Manually need to be updated in env file based on your domain name, IP etc.</td>
+<td>Manually need to be updated in env file based on your domain name, IP etc.</td>
 </tr>
 <tr>
 <td><code>REDIS_URL</code></td>
 <td>Redis Server Details including IP, Port and password</td>
-<td>Should replace the default password <code>q8N8HwlaOWqOl1hG7rdmBsm7oT52fLKHZXFwOB4VM7SXFDV8wg</code> to a new strong random password.</td>
-<td>Auto Generated no need to update it.</td>
+<td>Should replace the default password <code>q8N8HwlaOWqOl1hG7rdmBsm7oT52fLKHZXFwOB4VM7SXFDV8wg</code> to a new strong random password. Do not update other details except password</td>
+<td>Manually need to be updated in env file for REDIS password, IP and Port details</td>
 </tr>
 <tr>
 <td><code>REDIS_PASSWORD</code></td>
@@ -1776,13 +1776,13 @@
 <td><code>POSTGRES_USER</code> , <code>POSTGRES_PASSWORD</code>, <code>POSTGRES_PORT</code>, <code>POSTGRES_DB</code></td>
 <td>Postgres DB username, password, port, and DB names</td>
 <td>Manually need to be updated in env file</td>
-<td>Auto Generated no need to update it.</td>
+<td>Manually need to be updated in env file.</td>
 </tr>
 <tr>
 <td><code>POSTGRES_HOST</code></td>
 <td>Postgres host name</td>
 <td>Should not be updated.</td>
-<td>Auto Generated no need to update it.</td>
+<td>Manually need to be updated in env file.</td>
 </tr>
 <tr>
 <td><code>USE_S3</code></td>
@@ -1795,6 +1795,12 @@
 <td>Bucket details if <code>USE_S3</code> is set to <code>True</code></td>
 <td>Optional</td>
 <td>Optional</td>
+</tr>
+<tr>
+<td><code>USE_DOCKER</code></td>
+<td>Used by APTRS Django code to validate if application deployed on Docker or Not</td>
+<td>Optional, It is already declared as <code>True</code> in Docker file</td>
+<td>Required to set to <code>False</code></td>
 </tr>
 </tbody>
 </table>
