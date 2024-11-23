@@ -15,5 +15,5 @@
 
 ### Mention 
 
-**[Yonathan johnson](https://github.com/ya-johnson)** Started creating the frontend using React. Although they could not complete the development due to certain circumstances, his initiative and effort are greatly appreciated.
+**[Yonathan johnson](https://github.com/ya-johnson)** Started creating the frontend using React. Although he could not complete the development due to certain circumstances, his initiative and effort are greatly appreciated.
 

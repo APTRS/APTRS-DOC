@@ -16,3 +16,7 @@ The APTRS backend uses the ``.env`` file to store credentials such as S3 bucket 
 |`USE_S3`| If you want to use Cloud S3 bucket Digital Ocean or AWS s3 bucket. Default ``False``, you can change it to `True`|Optional| Optional |
 | `AWS_ACCESS_KEY_ID` `AWS_SECRET_ACCESS_KEY` `AWS_STORAGE_BUCKET_NAME` `AWS_S3_REGION_NAME` `AWS_S3_CUSTOM_DOMAIN` `AWS_S3_ENDPOINT_URL` | Bucket details if `USE_S3` is set to `True`|Optional| Optional|
 | `USE_DOCKER` | Used by APTRS Django code to validate if application deployed on Docker or Not |Optional, It is already declared as `True` in Docker file | Required to set to `False`|
+| `USER_TIME_ZONE` |  Used by APTRS Django code and Background task schedule time using celery |    Required to set the local time zon or UTC  |   Required to set the local time zon or UTC |
+
+
+- [List of Supported Time Zone](https://gist.github.com/heyalexej/8bf688fd67d7199be4a1682b3eec7568)
