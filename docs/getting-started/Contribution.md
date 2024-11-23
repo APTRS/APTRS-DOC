@@ -11,3 +11,9 @@
     - [GitHub](https://github.com/djscruggs)
     - [Portfolio](https://djscruggs.com)
     - [LinkedIn](https://www.linkedin.com/in/djscruggs/)
+
+
+### Mention 
+
+**[Yonathan johnson](https://github.com/ya-johnson)** Started creating the frontend using React. Although they could not complete the development due to certain circumstances, his initiative and effort are greatly appreciated.
+

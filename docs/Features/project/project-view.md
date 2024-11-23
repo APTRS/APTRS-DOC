@@ -12,7 +12,7 @@ The project status is automatically calculated based on the project’s start an
 - **Upcoming**: If the start date is in the future.
 - **In Progress**: If the start date has passed or is today, but the end date is still in the future.
 - **Delayed**: If the end date has passed.
-- **Completed**: If the projct is marked as completed.
+- **Completed**: If the project is marked as completed.
 
 If your project is completed, you can manually mark it as **Completed** from the project summary. To do this, navigate to the project from the project table or dashboard, and you’ll find an option to mark it as completed on the project summary page.
 

@@ -27,7 +27,7 @@
 
 ## 3. Report Standard
 - **Description:**  
-  The standard or methodology being used for generating the report (e.g., OWASP, NIST). It will be in the list format, you can use below example to get in a text seperated by comma.
+  The standard or methodology being used for generating the report (e.g., OWASP, NIST). It will be in the list format, you can use below example to get in a text separated by comma.
 - **Usage Example:**  
   Display the methodology or standard used in the vulnerability report.
   

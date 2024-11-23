@@ -2,7 +2,7 @@
 
 APTRS allows you to add and manage companies, with two types of companies supported: Internal Companies and External (Non-Internal) Companies.
 
-![Comapany Page](https://raw.githubusercontent.com/APTRS/APTRS-Changelog/refs/heads/main/images/company.png)
+![Company Page](https://raw.githubusercontent.com/APTRS/APTRS-Changelog/refs/heads/main/images/company.png)
 
 
 ## Internal Companies

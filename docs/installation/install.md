@@ -1,7 +1,7 @@
 APTRS can be installed using two methods:
 
 - Docker (Recommended for most users)
-- Manual (User with Knowledge of Ngnix and Little Python and Nodejs)
+- Manual (User with Knowledge of Nginx and Little Python and Nodejs)
 
 
 !!! note

@@ -4,7 +4,7 @@
 Customers in APTRS are external users who belong to external (non-internal) companies. You can manage these users from the Customer page, where external users are added and tracked, and they are included in reports as customer users.
 
 
-![Comapany Page](https://raw.githubusercontent.com/APTRS/APTRS-Changelog/refs/heads/main/images/customer.png)
+![Company Page](https://raw.githubusercontent.com/APTRS/APTRS-Changelog/refs/heads/main/images/customer.png)
 
 
 ### Adding Customers
