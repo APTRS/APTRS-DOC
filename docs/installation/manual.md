@@ -127,7 +127,6 @@ It's better to separate the API and web service from other users on the machine.
 sudo adduser aptrs
 sudo usermod -aG sudo aptrs
 usermod -a -G www-data aptrs
-sudo chown -R aptrs:www-data /home/aptrs
 sudo su - aptrs
 ```
 
@@ -151,7 +150,7 @@ git clone https://github.com/APTRS/APTRS
 cd APTRS
 poetry install
 cd APTRS
-cp cd APTRS .env  # The .env file should be located in the same directory as the manage.py file.
+cp env.example .env  # The .env file should be located in the same directory as the manage.py file.
 
 
 ```
@@ -328,6 +327,11 @@ We have everything set up, and our APIs are running with Gunicorn. Now, we need 
 sudo apt install nginx
 ```
 
+Since our frontend and backend are in the user directory, we will encounter a permission error from Nginx. To resolve this, we will grant access to the www-data user group with the command below:
+
+```bash
+sudo chown -R aptrs:www-data /home/aptrs
+```
 
 To complete the setup, we can assume the domain name for our web server is `demo.aptrs.com`. The configuration below will have the nginx configuration files or folder names based on the domain, which users should replace with their actual domain.
 
