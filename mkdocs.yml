@@ -51,6 +51,7 @@ nav:
     - installation/install.md
     - Docker: installation/docker.md
     - Manual: installation/manual.md
+    - Post Deploy: installation/post-deploy.md
     - Environment Variables: installation/env.md
     - Frontend: installation/frontend.md
     - Secure Certificate: installation/certificate.md
