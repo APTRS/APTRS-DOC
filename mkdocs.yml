@@ -51,6 +51,7 @@ nav:
     - installation/install.md
     - Docker: installation/docker.md
     - Manual: installation/manual.md
+    - Digital Ocean: installation/DigitalOcean.md
     - Post Deploy: installation/post-deploy.md
     - Environment Variables: installation/env.md
     - Frontend: installation/frontend.md
