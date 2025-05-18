@@ -1,12 +1,32 @@
-Each project can have a retest task created and assigned to a user. Similar to a project, each retest includes a start and end date and has a designated retest owner. Retests allow you to specify the revalidation of the project’s vulnerabilities, ensuring that fixes have been applied as expected. Within a project, users can initiate a retest to start this process.
+# Project Retest
 
-![Retest](https://raw.githubusercontent.com/APTRS/APTRS-Changelog/refs/heads/main/images/retest.png)
+Retests verify if vulnerabilities have been properly fixed by clients after the initial assessment.
 
-Similar to project ownership, the retest owner is automatically set to the user creating the retest if they do not have admin privileges or the Assign Projects permission. Users with admin access or Assign Projects permission can select the retest owner. Once a retest task is created, it cannot be edited, though you can still delete the retest task if needed.
+![Retest Interface](https://raw.githubusercontent.com/APTRS/APTRS-Changelog/refs/heads/main/images/retest.png)
 
-### Validation
+## Key Features
 
-- **Project Completion Requirement:** A retest task cannot be created if the project is not marked as completed. Retests are only applicable to projects that have been fully executed, as retests aim to validate resolved vulnerabilities. Therefore, a project must be completed before any retest can be initiated.
-- **Single Active Retest Restriction:** Even if the project is completed, you cannot create a new retest task if there is an existing retest task that is not marked as completed. Only one active retest can be associated with a project at a time.
+- Assign specific owners to handle retest assessments
+- Track fixed and unfixed vulnerabilities
+- Generate separate retest reports
+- Put retests on hold with documented reasons
+
+## Status Management
+
+- Project and retest share the same status system
+- If a project has an active retest, its status is based on the retest dates
+- Without a retest, status is calculated from project start/end dates
+- Both project and retest can be put on hold with a documented reason
+
+## Retest Requirements
+
+- Can only be added to completed projects
+- Only one active retest allowed at a time
+- Cannot be edited after creation (but can be deleted)
+
+## Owner Assignment
+
+- Creator becomes owner by default
+- Users with admin rights or "Assign Projects" permission can select different owners
 
 

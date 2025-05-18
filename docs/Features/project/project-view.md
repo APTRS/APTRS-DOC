@@ -1,27 +1,32 @@
+# Project Management
 
+Projects in APTRS represent individual penetration testing engagements. Each project is linked to a company and contains vulnerabilities, reports, and other assessment data.
 
-APTRS allows users to create and manage projects, which are typically created when conducting a pentest for a company. When setting up a project, you can associate it with a specific company, select multiple internal users as project owners, and define key details such as project type, start and end dates, and a brief description.
+![Project Page](https://raw.githubusercontent.com/APTRS/APTRS-Changelog/refs/heads/main/images/project.png)
 
-Once the project is created, you can later add vulnerabilities, generate reports, and track progress within the project. This feature helps organize pentesting efforts efficiently, ensuring clear project ownership and structure.
+## Project View
 
-![project Page](https://raw.githubusercontent.com/APTRS/APTRS-Changelog/refs/heads/main/images/project.png)
+- Shows all projects
+- Filter projects by status (In Progress, Delayed, On Hold, Upcoming, Completed)
+- Provides overview of all ongoing and completed assessments
 
-### Project Status
-The project status is automatically calculated based on the project’s start and end dates:
+## Project Status
 
-- **Upcoming**: If the start date is in the future.
-- **In Progress**: If the start date has passed or is today, but the end date is still in the future.
-- **Delayed**: If the end date has passed.
-- **Completed**: If the project is marked as completed.
+Status is automatically determined by dates:
 
-If your project is completed, you can manually mark it as **Completed** from the project summary. To do this, navigate to the project from the project table or dashboard, and you’ll find an option to mark it as completed on the project summary page.
+- **Upcoming**: Start date is in the future
+- **In Progress**: Between start and end dates
+- **Delayed**: End date has passed
+- **Completed**: Manually marked as completed
 
+## Project Details
 
-### Project Details
-Once a project is created, it is not possible to change the associated company. However, you can still edit other details, such as project type, dates, description, and owners.
+- Company association cannot be changed after creation
+- Other details (type, dates, description) can be edited anytime
 
+## Project Owners
 
-
-### Project Owners
-In Version 1.0, APTRS supports assigning multiple project owners, allowing you to add as many project owners as needed. Assigning or selecting a project owner requires admin privileges or the Assign Projects permission. Otherwise, the user creating the project is automatically added as the project owner.
+- Multiple owners can be assigned to a project
+- Requires admin rights or "Assign Projects" permission
+- Project creator becomes owner by default
 

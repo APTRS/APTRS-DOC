@@ -1,6 +1,6 @@
 # Manual Installation
 
-If you prefer to install the APTRS without Docker and have more control over each service, such as Redis, Postgresql, Nginx, etc., or if you want to host the database on a different server, Redis on a different server, etc., you can follow the below process for deploying the APTRS on a server without Docker. 
+If you prefer to install the APTRS without Docker and have more control over each service, such as Redis, Postgresql, Nginx, etc., or if you want to host the database on a different server, Redis on a different server, etc., you can follow the below process for deploying the APTRS on a server without Docker.
 
 The steps mentioned below were tested on the below setup:
 
@@ -25,7 +25,7 @@ The steps mentioned below were tested on the below setup:
 - [Digital Ocean - How To Install and Secure Redis on Ubuntu 22.04](https://www.digitalocean.com/community/tutorials/how-to-install-and-secure-redis-on-ubuntu-22-04)
 - [Digital Ocean - How To Install and Use PostgreSQL on Ubuntu 20.04](https://www.digitalocean.com/community/tutorials/how-to-install-and-use-postgresql-on-ubuntu-20-04)
 
-## PostgreSQL Setup 
+## PostgreSQL Setup
 
 Run the below command to install PostgreSQL.
 
@@ -134,7 +134,7 @@ APTRS uses Python Poetry to manage dependencies, so we ensure its installation.
 
 ```bash
 curl -sSL https://install.python-poetry.org | python3 -
-``` 
+```
 
 By default, Poetry is not added to the user or system environment. Ensure you add it to the environment.
 
@@ -184,26 +184,31 @@ exit
 ```
 
 
-Once we have completed the required setup, we need to start the server. APTRS uses Gunicorn for this purpose, which should already be installed through the steps we have completed so far. Since we are using Poetry, we need to locate the full path of Gunicorn for the APTRS project using the command below:
+Once we have completed the required setup, we need to start the server. APTRS uses Gunicorn for this purpose, which should already be installed through the steps we have completed so far.
+
+### Setting up Gunicorn Service
+
+First, we need to locate the full path of Gunicorn in our Poetry virtual environment:
 
 ```bash
 $> cd /home/aptrs/APTRS
 $> poetry run which gunicorn
 
-##We might get the full path like below, this will be different for all users
+## Example output (your path will likely be different):
 /home/aptrs/.cache/pypoetry/virtualenvs/aptrs-h1P6HTQN-py3.12/bin/gunicorn
 ```
 
-Once we have the full path for gunicorn, we can set up the `gunicorn.service` with the command below:
+!!! tip "Important"
+    Make note of this path as you'll need it in the next step when configuring the Gunicorn service.
+
+Once we have the full path for Gunicorn, we can set up the `gunicorn.service` file:
 
 
 ```bash
 sudo nano /etc/systemd/system/gunicorn.service
 ```
 
-In the nano file editor, paste the following text. Ensure to update the full path for gunicorn in the `gunicorn.service` file.
-
-
+In the nano file editor, paste the following configuration. **Remember to replace the `ExecStart` path with the full Gunicorn path you found in the previous step**:
 
 ```bash
 [Unit]
@@ -215,6 +220,7 @@ After=network.target
 User=aptrs
 Group=www-data
 WorkingDirectory=/home/aptrs/APTRS/APTRS
+# Replace this path with your actual Gunicorn path from the previous step
 ExecStart=/home/aptrs/.cache/pypoetry/virtualenvs/aptrs-h1P6HTQN-py3.12/bin/gunicorn --workers 3 --access-logfile - --bind unix:/run/gunicorn.sock APTRS.wsgi:application
 
 [Install]
@@ -223,11 +229,13 @@ WantedBy=multi-user.target
 
 
 
-We can now set up the `gunicorn.socket` using the command below:
+Next, we need to set up the Gunicorn socket file:
 
 ```bash
 sudo nano /etc/systemd/system/gunicorn.socket
 ```
+
+Add the following configuration to the socket file:
 
 ```bash
 [Unit]
@@ -238,10 +246,11 @@ ListenStream=/run/gunicorn.sock
 
 [Install]
 WantedBy=sockets.target
-
 ```
 
-Now that everything is ready, we can start the Gunicorn service using the command below.
+### Starting and Enabling Gunicorn Services
+
+Now that everything is configured, we can start and enable the Gunicorn services:
 
 ```bash
 sudo systemctl start gunicorn.socket
@@ -251,34 +260,45 @@ sudo systemctl daemon-reload
 sudo systemctl restart gunicorn
 ```
 
-You can verify whether the APTRS APIs are operational by using the command below.
+### Verifying the API Service
+
+To verify that the APTRS APIs are operational, run this command:
 
 ```bash
 curl --unix-socket /run/gunicorn.sock localhost/api/config/ping/
+```
 
+You should receive a success response like this:
+```json
 {"status":"ok","message":"Server is up and running!"}
 ```
 
-In case of an error, you can check if the socket and service have any issues using the command below.
-```bash
-sudo systemctl status gunicorn.socket
-sudo systemctl status gunicorn
-```
+!!! tip "Troubleshooting"
+    If you encounter any issues, check the status of the Gunicorn socket and service:
+    ```bash
+    sudo systemctl status gunicorn.socket
+    sudo systemctl status gunicorn
+    ```
+    Look for any error messages in the output to help diagnose the problem.
 
 
 
 ## Frontend ViteJs Setup
 
-To install Node.js, run the command below.
+This section covers the installation and configuration of the APTRS frontend built with Vite.js.
+
+### Installing Node.js and NPM
+
+First, install Node.js and NPM:
 
 ```bash
 sudo apt install nodejs
 sudo apt install npm
 ```
 
+### Configuring the Frontend Environment
 
-After installing NPM and Node.js, we need to create a `.env` file for the front end. This `.env` file will contain the URL for the backend Django API. Since we plan to deploy both the API and the frontend on the same server and they will be accessible through the same domain or IP address using Nginx, we will specify the backend URL as `/api/`. For more details, please refer to the **[Frontend](/installation/frontend/)** documentation.
-
+After installing NPM and Node.js, we need to create a `.env` file for the frontend that points to our backend API:
 
 ```bash
 cd /home/aptrs/APTRS/frontend
@@ -286,12 +306,15 @@ cp env.example .env
 nano .env
 ```
 
-In the Nano editor, modify the content to reflect the following changes:
+In the Nano editor, modify the content to the following:
 
 ```bash
 VITE_APP_API_URL = /api/
 VITE_APP_ENV = production
 ```
+
+!!! note "API URL Configuration"
+    We're using `/api/` as the backend URL since both the frontend and backend will be served from the same domain through Nginx's reverse proxy. For more details on frontend configuration, see the **[Frontend](/installation/frontend/)** documentation.
 
 Now that we have configured the env file, we can install the required packages for the frontend with the command below:
 
@@ -309,7 +332,7 @@ Once the build is completed, we can see all the front-end build at the directory
 
 ```bash
 cd /home/aptrs/APTRS/frontend/dist
-ls 
+ls
 
 android-chrome-192x192.png  assets             favicon.ico       logo.svg       stats.html
 android-chrome-512x512.png  favicon-16x16.png  hero-desktop.png  manifest.json
@@ -361,7 +384,7 @@ server {
         return 444;
  }
 
-    # Pass all /api/* to the Django backend 
+    # Pass all /api/* to the Django backend
     location /api/ {
         proxy_pass http://unix:/run/gunicorn.sock;
         proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
@@ -378,25 +401,25 @@ server {
  }
     ## Server Static from Django over nginx
     location /static/ {
-        alias /home/aptrs/APTRS/APTRS/static/; 
+        alias /home/aptrs/APTRS/APTRS/static/;
  }
 
-    # Blocked, accessing the whole media folder may lead to access to sensitive images like POC images, 
+    # Blocked, accessing the whole media folder may lead to access to sensitive images like POC images,
     #location /media/ {
     #    alias /home/aptrs/APTRS/APTRS/media/;  # Path to your media files
-    #} 
+    #}
 
-    location = /favicon.ico { 
+    location = /favicon.ico {
     alias /home/aptrs/APTRS/frontend/dist/favicon.ico;
-    access_log off; 
-    log_not_found off; 
-    
+    access_log off;
+    log_not_found off;
+   
  }
 
     ## Server user profile photo
     location /media/profile/ {
         alias /home/aptrs/APTRS/APTRS/media/profile/;  # Path to your media files
- } 
+ }
 
     ## Server Company Logo Images
     location /media/company/ {
@@ -406,7 +429,7 @@ server {
     ## HTML Report design Images like background images
     location /media/report/ {
         alias /home/aptrs/APTRS/APTRS/media/report/;  # Path to your media files
- } 
+ }
 
     access_log /var/log/nginx/APTRS_access.log;  # Path to access log file
     error_log /var/log/nginx/APTRS_error.log;   # Path to the error log file
@@ -436,13 +459,14 @@ If there are no errors we can start the nginx
 sudo systemctl restart nginx
 ```
 
+!!! success "Installation Complete"
+    At this point, your APTRS installation should be complete and accessible via your domain or IP address. You can navigate to http://your-domain.com (or https:// if you've set up SSL) in your browser to access the APTRS interface.
 
 
 
 ### HTTPS Certificate
 
-Once we have the domain name we can get the CA certificate with certbot using the below command. 
-
+For production environments, it's highly recommended to secure your site with HTTPS. We can use Let's Encrypt and Certbot to obtain a free SSL certificate:
 
 ```bash
 sudo apt install certbot python3-certbot-nginx
@@ -450,3 +474,8 @@ sudo certbot --nginx -d demo.aptrs.com
 sudo systemctl status certbot.timer
 sudo certbot renew --dry-run
 ```
+
+The certbot utility will guide you through the process of obtaining and installing the certificate. It will also modify your Nginx configuration to use HTTPS and redirect HTTP traffic to HTTPS.
+
+!!! tip "Auto-renewal"
+    Certbot automatically adds a timer to renew certificates before they expire. You can verify this is working with the `sudo systemctl status certbot.timer` command.

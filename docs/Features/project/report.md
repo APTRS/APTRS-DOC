@@ -1,27 +1,49 @@
-Once your project is ready, you can generate a report for the identified vulnerabilities. APTRS version 1.0 provides options to generate reports in PDF, Excel, and DOCX formats. Navigate to the report section within the project, select the desired report type and standard, and download the report directly.
+# Project Reports
 
+Generate comprehensive reports for your security assessments in multiple formats. Reports include all vulnerabilities, their details, and project information.
 
-![Report](https://raw.githubusercontent.com/APTRS/APTRS-Changelog/refs/heads/main/images/report.png)
+![Report Generation Interface](https://raw.githubusercontent.com/APTRS/APTRS-Changelog/refs/heads/main/images/report.png)
 
-As of version 1.0, the DOCX report generation feature is experimental. It may be removed or enhanced with more customization options in future versions. Once validated for full customization and consistent presentation, this feature will become permanent.
+## Report Generation
 
-### Report Customization
+APTRS offers three report formats:
 
-You can customize both the PDF and DOCX reports:
+- **PDF**: Professional, polished reports with full formatting
+- **Excel**: Spreadsheet format for data analysis
+- **DOCX**: Word document format (still experimental in version 2.0)
 
-- **PDF Reports:** APTRS uses the WeasyPrint Python library to convert HTML into PDF. You can modify the HTML and CSS files used in report generation to match your requirements. 
-- **DOCX Reports:** APTRS leverages the `python-docxtpl` library to create DOCX files. The CKEditor WYSIWYG editor is used for entering vulnerability and project details. CKEditor’s HTML output is then converted into DOCX format using the `html2docx` library, and integrated with `docxtpl` to generate the final report.
+## Version 2.0 Improvements
 
-The HTML and DOCX report templates are available here:
-- [HTML and DOCX Report Templates](https://github.com/APTRS/APTRS/tree/main/APTRS/templates)
+- Standards are now saved in project details instead of being selected during report generation
+- Streamlined report generation process with fewer steps
+- Consistent report formatting across multiple reports for the same project
 
-CSS files for HTML-to-PDF reports can be customized here:
-- [CSS for PDF Reports](https://github.com/APTRS/APTRS/tree/main/APTRS/static/css)
+!!! note "DOCX Status"
+    DOCX report generation remains an experimental feature as of version 2.0. It may be enhanced with additional customization options or modified in future releases.
 
+## Report Customization
 
-#### Report Limitations
-- **PDF Reports:** APTRS uses the ``WeasyPrint`` Python library to generate PDF reports. However, ``WeasyPrint`` does not support JavaScript execution, which limits the ability to include custom, interactive charts directly within the PDF. Instead, APTRS generates charts using a Python library and embeds them as static images in the PDF. This approach restricts customization of charts via HTML and CSS.
-- **DOCX Reports:** APTRS generates DOCX reports using a combination of ``python-docx``, ``python-docxtpl``, and ``html2docx``. While ``python-docxtpl`` enables dynamic content insertion into documents, it does not support updating or dynamically modifying charts. As a result, charts included in DOCX reports cannot be automatically updated with dynamic values by APTRS.
+### PDF Reports
+APTRS uses the WeasyPrint Python library to convert HTML into PDF. You can modify the HTML and CSS files to match your requirements.
+
+### DOCX Reports
+APTRS leverages `python-docxtpl`, CKEditor WYSIWYG, and `html2docx` to create DOCX files. Vulnerability and project details are entered via CKEditor, converted to DOCX, and integrated with templates.
+
+### Customization Resources
+
+- **Templates**: [HTML and DOCX Report Templates](https://github.com/APTRS/APTRS/tree/main/APTRS/templates)
+- **CSS Files**: [CSS for PDF Reports](https://github.com/APTRS/APTRS/tree/main/APTRS/static/css)
+
+## Report Limitations
+
+### PDF Reports
+- WeasyPrint doesn't support JavaScript execution
+- Charts are generated as static images instead of interactive elements
+- Limited customization of charts via HTML/CSS
+
+### DOCX Reports
+- Uses combination of `python-docx`, `python-docxtpl`, and `html2docx`
+- Cannot automatically update or modify charts with dynamic values
 
 
 

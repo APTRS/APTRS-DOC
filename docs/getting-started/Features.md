@@ -12,4 +12,6 @@
 
 - **Project and Customer Management:** Manage all your projects, retest, and customer all in one place. The user and project tracking allows you to monitor the user's project allocation, plans, and status.
 
+- **Customer Portal Access:** Customers can log in to their dedicated dashboard to view projects status (ongoing, on hold, completed), track progress, and download reports directly without requiring assistance.
+
 ***

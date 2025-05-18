@@ -1,4 +1,17 @@
-Each project includes scopes, allowing you to define the list of IPs, URLs, or application names that are part of the engagement. Starting from version 1.0, each project can have multiple scopes. Within the project page, you can navigate to the Scope section to manage the specific scope of the project.
+# Project Scope
 
+Project scope defines the targets for your assessment, including URLs, IP addresses, or application names.
 
-![Scope](https://raw.githubusercontent.com/APTRS/APTRS-Changelog/refs/heads/main/images/scope.png)
+![Scope Management Interface](https://raw.githubusercontent.com/APTRS/APTRS-Changelog/refs/heads/main/images/scope.png)
+
+## Managing Scope
+
+- **Add New**: Add individual scope items
+- **Add Multiple**: Import multiple targets at once
+- **Edit/Delete**: Modify or remove existing scope items
+- **Description**: Optional details about each target
+
+## Requirements
+
+- At least one scope item must be defined before adding vulnerabilities
+- Each scope item includes a target and optional description

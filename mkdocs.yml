@@ -4,7 +4,7 @@ theme:
   logo: https://i.ibb.co/BsfwzSf/download.png
   favicon: https://i.ibb.co/LY6gbtW/android-chrome-512x512.png
   features:
-    - toc.integrate 
+    - toc.integrate
     - toc.follow
     - navigation.path
     - navigation.indexes
@@ -22,7 +22,7 @@ theme:
 
     # Palette toggle for light mode
     - media: "(prefers-color-scheme: light)"
-      scheme: default 
+      scheme: default
       toggle:
         icon: material/brightness-7
         name: Switch to dark mode
@@ -41,7 +41,7 @@ plugins:
 
 nav:
   - Getting Started:
-    - index.md 
+    - index.md
     - Features: getting-started/Features.md
     - Project Contribution: getting-started/Contribution.md
     - Sponsors: getting-started/Sponsors.md
@@ -67,12 +67,14 @@ nav:
     - Configuration: Features/configuration/configuration.md
     - Project:
       - Project View: Features/project/project-view.md
+      - Project Summary: Features/project/project-summary.md
       - Project Vulnerability: Features/project/Vulnerability.md
       - Project Scope: Features/project/scope.md
       - Project Retest: Features/project/retest.md
       - Project Report: Features/project/report.md
-  - Report Customization: 
-    - PDF: 
+  - Customer Portal: customer/index.md
+  - Report Customization:
+    - PDF:
       - custom-report/pdf/pdf.md
       - Context Variable: custom-report/pdf/context-variable.md
       - Project: custom-report/pdf/project.md
@@ -91,8 +93,8 @@ nav:
       - Additional: custom-report/docx/other.md
   - API Documentation: API.md
   - Change Log: https://github.com/APTRS/APTRS-Changelog/blob/main/README.md" target="_blank
-  
-    
+
+
 
 markdown_extensions:
   - admonition
@@ -116,25 +118,25 @@ markdown_extensions:
   - pymdownx.caret
   - pymdownx.keys
   - pymdownx.mark
-      
-      
+
+
 extra:
   version:
     provider: mike
   social:
-    - icon: fontawesome/brands/twitter 
+    - icon: fontawesome/brands/twitter
       link: https://twitter.com/ano_f_
-    - icon: fontawesome/brands/github 
+    - icon: fontawesome/brands/github
       link: https://github.com/Anof-cyber/
     - icon: fontawesome/brands/linkedin
       link: https://www.linkedin.com/in/sourav-kalal
-    - icon: fontawesome/brands/medium 
+    - icon: fontawesome/brands/medium
       link: https://medium.com/@Ano_F_
-      
+
 extra_javascript:
   - https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.2/highlight.min.js
   - https://cdnjs.cloudflare.com/ajax/libs/prism/9000.0.1/prism.min.js
-  
+
 extra_css:
   - https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.2/styles/default.min.css
   - https://cdnjs.cloudflare.com/ajax/libs/prism/9000.0.1/themes/prism-dark.min.css

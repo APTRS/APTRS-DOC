@@ -17,6 +17,44 @@ The APTRS backend uses the ``.env`` file to store credentials such as S3 bucket 
 | `AWS_ACCESS_KEY_ID` `AWS_SECRET_ACCESS_KEY` `AWS_STORAGE_BUCKET_NAME` `AWS_S3_REGION_NAME` `AWS_S3_CUSTOM_DOMAIN` `AWS_S3_ENDPOINT_URL` | Bucket details if `USE_S3` is set to `True`|Optional| Optional|
 | `USE_DOCKER` | Used by APTRS Django code to validate if application deployed on Docker or Not |Optional, It is already declared as `True` in Docker file | Required to set to `False`|
 | `USER_TIME_ZONE` |  Used by APTRS Django code and Background task schedule time using celery |    Required to set the local time zon or UTC  |   Required to set the local time zon or UTC |
+| `USE_EMAIL` | Enable/disable email functionality for project status updates, password resets, invitations, etc. | Required (set to `True` if using email, `False` otherwise) | Required (set to `True` if using email, `False` otherwise) |
+| `EMAIL_HOST` | SMTP server hostname | Required if `USE_EMAIL=True`, leave empty otherwise | Required if `USE_EMAIL=True`, leave empty otherwise |
+| `EMAIL_PORT` | SMTP server port | Required (typically `587` for TLS, `465` for SSL) | Required (typically `587` for TLS, `465` for SSL) |
+| `EMAIL_USE_TLS` | Whether to use TLS encryption for SMTP | Required (set to `True` or `False`) | Required (set to `True` or `False`) |
+| `EMAIL_HOST_USER` | SMTP username/login | Required if `USE_EMAIL=True`, leave empty otherwise | Required if `USE_EMAIL=True`, leave empty otherwise |
+| `EMAIL_HOST_PASSWORD` | SMTP password | Required if `USE_EMAIL=True`, leave empty otherwise | Required if `USE_EMAIL=True`, leave empty otherwise |
+| `DEFAULT_FROM_EMAIL` | The default sender email address | Required if `USE_EMAIL=True`, leave empty otherwise | Required if `USE_EMAIL=True`, leave empty otherwise |
+| `FRONTEND_URL` | URL for the frontend, used in email links | Required if `USE_EMAIL=True`, set to your application's public URL | Required if `USE_EMAIL=True`, set to your application's public URL |
 
 
 - [List of Supported Time Zone](https://gist.github.com/heyalexej/8bf688fd67d7199be4a1682b3eec7568)
+
+## Email Configuration
+
+### Setting Up Email
+
+APTRS can send emails for various functions including:
+- Password reset links
+- User invitations
+- Project status updates (on hold, completed, etc.)
+- Customer notifications
+
+!!! info "Email Setup Requirements"
+    Even if you don't plan to use email functionality (`USE_EMAIL=False`), you must still set values for `EMAIL_PORT` and `EMAIL_USE_TLS`. You can use any integer for port (e.g., `587`) and either `True` or `False` for TLS.
+
+#### Example Email Configuration
+
+```python
+# Enable email functionality
+USE_EMAIL=True
+# SMTP server details
+EMAIL_HOST='smtp.gmail.com'
+EMAIL_PORT=587
+EMAIL_USE_TLS=True
+EMAIL_HOST_USER='your-email@gmail.com'
+EMAIL_HOST_PASSWORD='your-app-password'
+DEFAULT_FROM_EMAIL='APTRS <your-email@gmail.com>'
+# Your application's public URL for links in emails
+FRONTEND_URL='https://your-aptrs-domain.com'
+```
+

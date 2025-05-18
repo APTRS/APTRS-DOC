@@ -1,42 +1,154 @@
-
 # Groups and Permissions in APTRS
 
-APTRS uses permissions to control access to certain APIs and restrict features to specific users. To streamline this process, APTRS allows you to create groups and assign permissions to those groups. Once a group is created, you can assign users to one or more groups. A user assigned to multiple groups will inherit all the permissions from those groups.
+APTRS implements a robust role-based access control system that uses permissions and groups to manage user capabilities. This system ensures that users have appropriate access to features based on their responsibilities while maintaining system security.
 
-![Group Page](https://raw.githubusercontent.com/APTRS/APTRS-Changelog/refs/heads/main/images/group.png)
+## Permission Management Overview
 
+The permission system in APTRS follows these key principles:
 
+- **Permissions** define specific capabilities within the system
+- **Groups** bundle permissions together for easier assignment
+- **Users** are assigned to one or more groups
+- **Inheritance** ensures users receive all permissions from all their groups
+
+![Group Management Interface](https://raw.githubusercontent.com/APTRS/APTRS-Changelog/refs/heads/main/images/group.png)
+
+## Access Control Architecture
 
 ### How Permissions Work
-Permissions are pre-defined within APTRS to regulate access to various functionalities. These permissions cannot be modified or created from the user interface, as they are hard-coded in the backend. However, you can create custom groups and assign these predefined permissions to the groups. When users are assigned to a group, they will automatically gain all the permissions associated with that group.
 
-### Admin Users and Permissions
-Admin users in APTRS are not restricted by permissions or group assignments. This means that even if an admin user has no group assigned or is assigned to a group with limited permissions, they will still have full access to all features and APIs in the system. Admin users are always granted full control, regardless of group membership or assigned permissions.
+Permissions in APTRS are predefined and hard-coded in the backend. Each permission controls access to specific features or APIs within the application. Important aspects include:
 
-### Default Groups
-When you first deploy APTRS, several default groups are created with specific permissions. The most important groups are Project Manager and Manager. These groups are crucial for report generation, as they are used to add project manager and manager details to reports.
+- Permissions cannot be created or modified through the user interface
+- Each permission provides access to a specific set of functionality
+- Permissions are granular to allow precise access control
+- The system automatically checks permissions before allowing access to protected features
 
-While you can edit the permissions assigned to these groups, it is important to retain the group names ("Project Manager" and "Manager") if you want APTRS to correctly include project manager and manager details in the reports. Removing or renaming these groups may cause issues with report generation and prevent the correct user details from being added to reports.
+### Group Management
 
-### List of Permissions (as of version 1.0)
+Groups are collections of permissions that can be assigned to users. They simplify the process of permission assignment by bundling related capabilities:
 
-- Manage Users:
-Users with this permission can add, edit, and delete users, manage groups, and assign permissions to groups. They can also create and delete groups.
+- You can create custom groups through the Groups Management interface
+- Each group can be assigned any combination of available permissions
+- Groups can be modified at any time to adjust their permission sets
+- Users can be assigned to multiple groups to combine permission sets
 
-- Manage Projects:
-Users with this permission can create, edit, and delete projects. They can add vulnerabilities or retests within a project, generate reports, and add scope to projects. By default, users cannot select project or retest owners; projects and retests created by users with this permission will automatically mark the creator as the owner.
+!!! tip "Best Practice"
+    Create groups based on job functions rather than individuals. This approach makes it easier to maintain consistent permissions as your team changes.
 
-- Assign Projects:
-This permission allows users to select and assign project or retest owners. Users with this permission can assign any user as the owner of a project or retest.
+### Admin Users and Special Privileges
 
-- Manage Vulnerability Data:
-Users with this permission can add, edit, and delete entries in the vulnerability database or templates.
+Admin users in APTRS have special status within the permission system:
 
-- Manage Customers:
-Users with this permission can add, edit, and delete customers.
+- Admin users have **unrestricted access** to all system features
+- Admin status overrides any group-based permission restrictions
+- Even with no assigned groups, admin users retain full system access
+- Admin privileges cannot be limited through group assignments
 
-- Manage Companies:
-Users with this permission can add, edit, and delete companies.
+!!! warning "Admin Access"
+    Admin access should be granted sparingly and only to highly trusted users who require full system access. For most users, it's better to use appropriately configured permission groups.
 
-- Manage Configurations:
-Users with this permission can manage various application configurations.
+## Default Groups and Special Considerations
+
+When APTRS is first deployed, the system automatically creates several default groups with predefined permission sets. These groups serve as starting points for your permission structure.
+
+### Default Groups List
+
+| Group Name | Primary Purpose | Key Permissions |
+|------------|----------------|----------------|
+| Project Manager | Manages projects and appears in reports | Manage Projects, Assign Projects |
+| Manager | Oversees operations and appears in reports | Manage Projects, Assign Projects, Manage Users |
+| Administrator | Complete system administration | All permissions (similar to admin users) |
+| Penetration Tester | Conducts assessments and adds findings | Manage Projects (limited) |
+
+### Report-Critical Groups
+
+!!! important "Special Group Names"
+    The **Project Manager** and **Manager** groups are used by APTRS to identify users whose information should appear in generated reports. While you can modify the permissions assigned to these groups, **do not rename them** if you want report generation to function correctly.
+
+If these groups are renamed or removed:
+
+- Reports may not include required management information
+- Report templates may display errors or incomplete information
+- Report quality and compliance could be affected
+
+## System Permissions Reference
+
+APTRS includes the following core permissions that can be assigned to groups (as of version 2.0):
+
+### Manage Users
+- **Capability**: Comprehensive user management
+- **Functions**:
+
+    - Add, edit, and delete user accounts
+    - Create and manage groups
+    - Assign permissions to groups
+    - Manage user-group assignments
+
+### Manage Projects
+- **Capability**: Full project lifecycle management
+- **Functions**:
+    - Create, edit, and delete projects
+    - Add vulnerabilities to projects
+    - Create and manage retests
+    - Generate and export reports
+    - Define project scope
+    - **Note**: By default, users are automatically set as owners of projects they create
+
+### Assign Projects
+- **Capability**: Project ownership management
+- **Functions**:
+    - Select and assign project owners
+    - Reassign projects to different users
+    - Assign retest ownership
+    - Override automatic owner assignment
+
+### Manage Vulnerability Data
+- **Capability**: Vulnerability database administration
+- **Functions**:
+    - Add, edit, and delete vulnerability templates
+    - Manage vulnerability categories
+    - Maintain finding descriptions and remediation advice
+
+### Manage Customers
+- **Capability**: External user management
+- **Functions**:
+
+    - Create and manage customer accounts
+    - Send and manage customer invitations
+    - Assign customers to companies
+    - Reset customer credentials when needed
+
+### Manage Companies
+- **Capability**: Company profile administration
+- **Functions**:
+    - Create and edit company profiles
+    - Upload and manage company logos
+    - Configure company-specific report settings
+    - Manage company-project associations
+
+### Manage Configurations
+- **Capability**: System configuration
+- **Functions**:
+    - Adjust system-wide settings
+    - Set default behaviors and preferences
+
+## Best Practices for Permission Management
+
+### Creating an Effective Permission Structure
+
+1. **Start with Default Groups**: Use the provided groups as templates
+2. **Create Functional Groups**: Align groups with job functions or departments
+3. **Follow Least Privilege**: Grant only the permissions necessary for each role
+4. **Use Descriptive Names**: Name groups clearly to reflect their purpose
+5. **Document Your Structure**: Maintain documentation of your permission scheme
+
+### Security Considerations
+
+- Regularly audit user permissions and group assignments
+- Promptly remove permissions when users change roles
+- Consider creating temporary groups for contractors or temporary staff
+- Review admin user assignments periodically
+
+!!! danger "Permission Drift"
+    Without regular auditing, permissions tend to accumulate over time as users are added to groups but rarely removed. This "permission drift" can create security vulnerabilities as users retain access they no longer need.

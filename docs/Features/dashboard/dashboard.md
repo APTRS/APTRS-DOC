@@ -1,10 +1,49 @@
 # Dashboard
 
+The Dashboard provides a comprehensive overview of your projects and retests, tailored specifically to the logged-in user. It serves as your personal command center, displaying only the projects and retests that are relevant to you as the owner.
 
-The Dashboard provides a personalized view of projects based on the logged-in user’s ownership and project status. Unlike the Projects View Page, which lists all projects within APTRS, the Dashboard only displays projects where the logged-in user is the owner and the project is not marked as completed. The Dashboard shows projects with the following statuses: Delay, In Progress, or Upcoming, as long as the user is the owner of those projects.
+## Dashboard Overview
 
-In addition to active or upcoming projects, the Dashboard also displays completed projects if the project has an active retest. Even if a project is marked as completed, it will be shown in the Dashboard if it has any upcoming, in-progress, or delayed retests where the logged-in user is the owner of the retest task.
+The Dashboard has been enhanced to provide at-a-glance statistics and detailed project information organized by status:
 
-This also applies in cases where the user is the owner of the retest task for a completed project, even if the user is not the owner of the original project. In such cases, the project will still appear on the Dashboard, allowing the user to view and manage their active retest tasks.
+1. **Status Counters** - The top section displays count summaries of both projects and retests by status:
+    - On Hold
+    - In Progress
+    - Delayed
+    - Upcoming
 
-![Dashboard Page](https://raw.githubusercontent.com/APTRS/APTRS-Changelog/refs/heads/main/images/dashboard.png)
+2. **Project Status Sections** - Below the counters, projects are organized into sections by their status:
+    - Each section displays projects where you are the owner
+    - Projects include key information such as project name and relevant dates
+    - Dates shown include start date, end date, and any status change dates
+
+![Dashboard Page with Status Counters](https://raw.githubusercontent.com/APTRS/APTRS-Changelog/refs/heads/main/images/dashboard.png)
+
+## Projects Display Logic
+
+Unlike the Projects View Page, which lists all projects within APTRS, the Dashboard is personalized to show only:
+
+- Projects where you are the assigned owner
+- Projects that match specific status criteria (On Hold, In Progress, Delayed, Upcoming)
+- Completed projects that have active retests assigned to you
+
+This filtered view helps you focus on what needs your attention without being distracted by projects managed by other team members or completed projects with no pending actions.
+
+## Retest Integration
+
+The Dashboard intelligently integrates retest information:
+
+- Projects with active retests appear even if the original project is marked as completed
+- If you're assigned as the owner of a retest but not the original project, the project will still appear on your Dashboard
+- Retest status is clearly indicated alongside the project
+
+## Benefits of the New Dashboard
+
+The redesigned Dashboard provides several key benefits:
+
+- **Quick Status Assessment**: Immediately see how many projects and retests are in each state
+- **Prioritization**: Easily identify delayed or upcoming projects that need attention
+- **Comprehensive View**: See both projects and their associated retests in one unified interface
+- **Personalized Experience**: View only what's relevant to you as a user
+
+This personalized approach ensures you can quickly assess your workload, prioritize tasks, and track important project milestones without having to filter through projects that don't require your attention.

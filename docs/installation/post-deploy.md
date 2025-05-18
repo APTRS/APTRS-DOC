@@ -1,29 +1,49 @@
-### First-Time Deployment Checklist for APTRS
+# Post-Deployment Setup
 
-Once you deploy APTRS using either the manual method or Docker, follow these steps to ensure everything is set up correctly:
+After successfully deploying APTRS through either the manual method or Docker, follow this checklist to ensure your system is properly configured and ready for use.
 
-#### 1. Company
-Upon the first deployment, APTRS automatically creates a default company named **APTRS PVT**. This company is designated as the internal company, representing the organization using APTRS to generate reports for clients.
+## First-Time Deployment Checklist
 
-- **Key Details:**
-    - The internal company cannot be deleted or added via the frontend or API.
-    - You can edit its **name**, **address**, and **logo** to match your organization’s details.
-    - Any additional companies you create will be treated as client companies.
+!!! tip "Before You Begin"
+    Keep this checklist handy to verify that all critical components are properly set up in your new APTRS installation.
 
-#### 2. Groups
-APTRS includes predefined user groups to facilitate report generation and role management.
+### 1. Company Setup
 
-- **Default Groups:**
-    - **Manager** and **Project Manager** groups are used to include manager details in the reports.
-    - It is recommended **not to rename or delete** these groups, as doing so may cause errors during report generation.
+Upon first deployment, APTRS automatically creates a default company named **APTRS PVT**. This serves as your internal company, representing the organization using APTRS to generate reports for clients.
 
-#### 3. User and Admin
-During the first deployment, APTRS creates a default admin user associated with the internal APTRS company.
+!!! important "Internal Company Management"
+    - The internal company **cannot be deleted or added** via the frontend or API
+    - You should edit its **name**, **address**, and **logo** to match your organization's details
+    - Any additional companies you create will be treated as client companies
 
-- **Key Details:**
-    - Do not delete this user, as it is essential for system functionality.
-    - You can update the admin user’s **profile details**, such as:
-        - **Email address**
-        - **Photo**
-        - **Name**
-        - **Password**
+### 2. User Groups
+
+APTRS includes predefined user groups that are essential for proper report generation and role management.
+
+!!! warning "Default Groups"
+    - **Manager** and **Project Manager** groups are used to include manager details in the reports
+    - Do **not rename or delete** these groups, as doing so may cause errors during report generation
+
+### 3. Admin User
+
+During first deployment, APTRS creates a default admin user associated with your internal company.
+
+!!! caution "Admin Account Security"
+    - Do not delete this user, as it is essential for system functionality
+    - For security, immediately update the admin user's profile details:
+        - **Email address** (use a secure company email)
+        - **Password** (use a strong, unique password)
+        - **Name** (real name or designated admin title)
+        - **Photo** (optional: company logo or admin photo)
+
+## Next Steps
+
+After completing the initial setup, you may want to:
+
+1. Create additional user accounts for your team members
+2. Add client companies to your system
+3. Configure vulnerability templates
+4. Customize report templates to match your brand
+5. Review system settings for optimal performance
+
+Refer to the [Features](/Features/index) documentation for detailed information on using these capabilities.
