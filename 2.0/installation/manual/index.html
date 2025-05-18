@@ -1,0 +1,2561 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../docker/">
+      
+      
+        <link rel="next" href="../DigitalOcean/">
+      
+      
+      <link rel="icon" href="https://i.ibb.co/LY6gbtW/android-chrome-512x512.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.14">
+    
+    
+      
+        <title>Manual - APTRS Docs</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.342714a4.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.2/styles/default.min.css">
+    
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/9000.0.1/themes/prism-dark.min.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+   <link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }
+    .gscrollbar-fixer { padding-right: 15px; }
+    .gdesc-inner { font-size: 0.75rem; }
+    body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+    body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../../assets/javascripts/glightbox.min.js"></script></head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#manual-installation" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <div data-md-color-scheme="default" data-md-component="outdated" hidden>
+        
+      </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="APTRS Docs" class="md-header__button md-logo" aria-label="APTRS Docs" data-md-component="logo">
+      
+  <img src="https://i.ibb.co/BsfwzSf/download.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            APTRS Docs
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Manual
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to system preference"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to system preference" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/APTRS/APTRS" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    APTRS/APTRS
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../.." class="md-tabs__link">
+          
+  
+  
+    
+  
+  Getting Started
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../install/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Installation
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../Features/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Features
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../customer/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Customer Portal
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../custom-report/pdf/pdf/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Report Customization
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../API/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  API Documentation
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="https://github.com/APTRS/APTRS-Changelog/blob/main/README.md" target="_blank" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Change Log
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="APTRS Docs" class="md-nav__button md-logo" aria-label="APTRS Docs" data-md-component="logo">
+      
+  <img src="https://i.ibb.co/BsfwzSf/download.png" alt="logo">
+
+    </a>
+    APTRS Docs
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/APTRS/APTRS" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    APTRS/APTRS
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../.." class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    Getting Started
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_1" id="__nav_1_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            Getting Started
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting-started/Features/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Features
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting-started/Contribution/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Project Contribution
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting-started/Sponsors/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Sponsors
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting-started/demo/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Demo
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting-started/license/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    License
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    Installation
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Installation
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../install/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Install
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../docker/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Docker
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Manual
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    Manual
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#reference-links" class="md-nav__link">
+    <span class="md-ellipsis">
+      Reference Links
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#postgresql-setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      PostgreSQL Setup
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#redis-setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      Redis Setup
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#aptrs-django-apis-setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      APTRS Django APIs Setup
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="APTRS Django APIs Setup">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#setting-up-gunicorn-service" class="md-nav__link">
+    <span class="md-ellipsis">
+      Setting up Gunicorn Service
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#starting-and-enabling-gunicorn-services" class="md-nav__link">
+    <span class="md-ellipsis">
+      Starting and Enabling Gunicorn Services
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#verifying-the-api-service" class="md-nav__link">
+    <span class="md-ellipsis">
+      Verifying the API Service
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#frontend-vitejs-setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      Frontend ViteJs Setup
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Frontend ViteJs Setup">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#installing-nodejs-and-npm" class="md-nav__link">
+    <span class="md-ellipsis">
+      Installing Node.js and NPM
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configuring-the-frontend-environment" class="md-nav__link">
+    <span class="md-ellipsis">
+      Configuring the Frontend Environment
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#nginx-setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      Nginx Setup
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Nginx Setup">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#https-certificate" class="md-nav__link">
+    <span class="md-ellipsis">
+      HTTPS Certificate
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../DigitalOcean/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Digital Ocean
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../post-deploy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Post Deploy
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../env/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Environment Variables
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../frontend/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Frontend
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../certificate/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Secure Certificate
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../Features/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    Features
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Features
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Features/dashboard/dashboard/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Dashboard
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Features/Users/users/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Users
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Features/company/company/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Company
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Features/company/customer/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Customer
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Features/permission/permission/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Groups and Permissions
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Features/vulnerabilityDB/vulnerability/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Vulnerability DB
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Features/configuration/configuration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Configuration
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_9" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_9" id="__nav_3_9_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Project
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_9">
+            <span class="md-nav__icon md-icon"></span>
+            Project
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Features/project/project-view/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Project View
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Features/project/project-summary/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Project Summary
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Features/project/Vulnerability/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Project Vulnerability
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Features/project/scope/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Project Scope
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Features/project/retest/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Project Retest
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Features/project/report/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Project Report
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../customer/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Customer Portal
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Report Customization
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Report Customization
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_1" id="__nav_5_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    PDF
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_1">
+            <span class="md-nav__icon md-icon"></span>
+            PDF
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../custom-report/pdf/pdf/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Customized PDF Report Documentation
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../custom-report/pdf/context-variable/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Context Variable
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../custom-report/pdf/project/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Project
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../custom-report/pdf/vulnerability/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Vulnerability
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../custom-report/pdf/company-user/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Company User
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../custom-report/pdf/scope/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Project Scope
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../custom-report/pdf/retest/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Project Retest
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../custom-report/pdf/other/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Additional
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_2" id="__nav_5_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    DOCX
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_2">
+            <span class="md-nav__icon md-icon"></span>
+            DOCX
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../custom-report/docx/docx/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Docx
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../custom-report/docx/project/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Project
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../custom-report/docx/vulnerability/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Vulnerability
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../custom-report/docx/company-user/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Company User
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../custom-report/docx/scope/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Project Scope
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../custom-report/docx/retest/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Project Retest
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../custom-report/docx/other/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Additional
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../API/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    API Documentation
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://github.com/APTRS/APTRS-Changelog/blob/main/README.md" target="_blank" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Change Log
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="manual-installation">Manual Installation</h1>
+<p>If you prefer to install the APTRS without Docker and have more control over each service, such as Redis, Postgresql, Nginx, etc., or if you want to host the database on a different server, Redis on a different server, etc., you can follow the below process for deploying the APTRS on a server without Docker.</p>
+<p>The steps mentioned below were tested on the below setup:</p>
+<ul>
+<li>OS - Ubuntu 24.10</li>
+<li>Python - 3.12.7  (3.9+ is required)</li>
+<li>Python Poetry - 1.8.4</li>
+<li>PostgreSQL - 16.4 (Ubuntu 16.4-1build1)</li>
+<li>Redis Server - 7.0.15</li>
+<li>Nginx - 1.26.0</li>
+<li>NodeJS - 20.16.0 (18+ is required)</li>
+<li>NPM - 9.2.0</li>
+</ul>
+<div class="admonition info">
+<p class="admonition-title">Note</p>
+<p>While we have provided detailed steps for manual installation and deployment, please note that this method is more prone to errors. Variations in software versions, updates, system configurations, and other factors may result in unexpected issues. Manual installation is intended for individuals who have a solid understanding of Linux, some level of development experience, or expertise in application deployment, and are comfortable troubleshooting potential errors that may arise.</p>
+</div>
+<h2 id="reference-links">Reference Links</h2>
+<ul>
+<li><a href="https://www.digitalocean.com/community/tutorials/how-to-set-up-django-with-postgres-nginx-and-gunicorn-on-ubuntu#step-10-configure-nginx-to-proxy-pass-to-gunicorn">Digital Ocean - How To Set Up Django with Postgres, Nginx, and Gunicorn on Ubuntu</a></li>
+<li><a href="https://www.digitalocean.com/community/tutorials/how-to-install-nginx-on-ubuntu-20-04">Digital Ocean - How To Install Nginx on Ubuntu 20.04</a></li>
+<li><a href="https://www.digitalocean.com/community/tutorials/how-to-secure-nginx-with-let-s-encrypt-on-ubuntu-20-04">Digital Ocean - How To Secure Nginx with Let's Encrypt on Ubuntu 20.04</a></li>
+<li><a href="https://www.digitalocean.com/community/tutorials/how-to-install-and-secure-redis-on-ubuntu-22-04">Digital Ocean - How To Install and Secure Redis on Ubuntu 22.04</a></li>
+<li><a href="https://www.digitalocean.com/community/tutorials/how-to-install-and-use-postgresql-on-ubuntu-20-04">Digital Ocean - How To Install and Use PostgreSQL on Ubuntu 20.04</a></li>
+</ul>
+<h2 id="postgresql-setup">PostgreSQL Setup</h2>
+<p>Run the below command to install PostgreSQL.</p>
+<div class="language-bash highlight"><span class="filename">Bash</span><pre><span></span><code><span id="__span-0-1">sudo<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w">  </span>postgresql<span class="w"> </span>postgresql-contrib
+</span></code></pre></div>
+<p>After the installation is complete, we can access the PostgreSQL shell using the command below.</p>
+<div class="language-bash highlight"><span class="filename">Bash</span><pre><span></span><code><span id="__span-1-1">sudo<span class="w"> </span>-u<span class="w"> </span>postgres<span class="w"> </span>psql
+</span></code></pre></div>
+<p>From the PostgreSQL shell, create a new database for the APTRS project. Change the name to something relevant to the project.</p>
+<div class="language-bash highlight"><span class="filename">Bash</span><pre><span></span><code><span id="__span-2-1">CREATE<span class="w"> </span>DATABASE<span class="w"> </span>aptrsdb<span class="p">;</span>
+</span></code></pre></div>
+<p>Next, create a database user for our project. Make sure to select a secure password:</p>
+<div class="language-bash highlight"><span class="filename">Bash</span><pre><span></span><code><span id="__span-3-1">CREATE<span class="w"> </span>USER<span class="w"> </span>aptrsdb_user<span class="w"> </span>WITH<span class="w"> </span>PASSWORD<span class="w"> </span><span class="s1">&#39;s!!D%AriPB-MO~5&#39;</span><span class="p">;</span>
+</span></code></pre></div>
+<p>We will set the default encoding to UTF-8 and adjust other settings. Please update the time zone according to your preference, and ensure we use the same time zone as the APTRS.</p>
+<div class="language-bash highlight"><span class="filename">Bash</span><pre><span></span><code><span id="__span-4-1">ALTER<span class="w"> </span>ROLE<span class="w"> </span>aptrsdb_user<span class="w"> </span>SET<span class="w"> </span>client_encoding<span class="w"> </span>TO<span class="w"> </span><span class="s1">&#39;utf8&#39;</span><span class="p">;</span>
+</span><span id="__span-4-2">ALTER<span class="w"> </span>ROLE<span class="w"> </span>aptrsdb_user<span class="w"> </span>SET<span class="w"> </span>default_transaction_isolation<span class="w"> </span>TO<span class="w"> </span><span class="s1">&#39;read committed&#39;</span><span class="p">;</span>
+</span><span id="__span-4-3">ALTER<span class="w"> </span>ROLE<span class="w"> </span>aptrsdb_user<span class="w"> </span>SET<span class="w"> </span>timezone<span class="w"> </span>TO<span class="w"> </span><span class="s1">&#39;UTC&#39;</span><span class="p">;</span>
+</span><span id="__span-4-4">
+</span><span id="__span-4-5"><span class="se">\c</span><span class="w"> </span>aptrsdb<span class="p">;</span>
+</span><span id="__span-4-6">GRANT<span class="w"> </span>USAGE<span class="w"> </span>ON<span class="w"> </span>SCHEMA<span class="w"> </span>public<span class="w"> </span>TO<span class="w"> </span>aptrsdb_user<span class="p">;</span>
+</span><span id="__span-4-7">GRANT<span class="w"> </span>ALL<span class="w"> </span>PRIVILEGES<span class="w"> </span>ON<span class="w"> </span>SCHEMA<span class="w"> </span>public<span class="w"> </span>TO<span class="w"> </span>aptrsdb_user<span class="p">;</span>
+</span><span id="__span-4-8">GRANT<span class="w"> </span>ALL<span class="w"> </span>PRIVILEGES<span class="w"> </span>ON<span class="w"> </span>ALL<span class="w"> </span>TABLES<span class="w"> </span>IN<span class="w"> </span>SCHEMA<span class="w"> </span>public<span class="w"> </span>TO<span class="w"> </span>aptrsdb_user<span class="p">;</span>
+</span><span id="__span-4-9">GRANT<span class="w"> </span>ALL<span class="w"> </span>PRIVILEGES<span class="w"> </span>ON<span class="w"> </span>ALL<span class="w"> </span>SEQUENCES<span class="w"> </span>IN<span class="w"> </span>SCHEMA<span class="w"> </span>public<span class="w"> </span>TO<span class="w"> </span>aptrsdb_user<span class="p">;</span>
+</span><span id="__span-4-10">ALTER<span class="w"> </span>DEFAULT<span class="w"> </span>PRIVILEGES<span class="w"> </span>IN<span class="w"> </span>SCHEMA<span class="w"> </span>public<span class="w"> </span>GRANT<span class="w"> </span>ALL<span class="w"> </span>PRIVILEGES<span class="w"> </span>ON<span class="w"> </span>TABLES<span class="w"> </span>TO<span class="w"> </span>aptrsdb_user<span class="p">;</span>
+</span><span id="__span-4-11">GRANT<span class="w"> </span>ALL<span class="w"> </span>PRIVILEGES<span class="w"> </span>ON<span class="w"> </span>DATABASE<span class="w"> </span>aptrsdb<span class="w"> </span>TO<span class="w"> </span>aptrsdb_user<span class="p">;</span>
+</span><span id="__span-4-12"><span class="se">\q</span>
+</span></code></pre></div>
+<p>After completing our tasks, we ensure that the PostgreSQL service is running and set to start automatically on reboot.</p>
+<div class="language-bash highlight"><span class="filename">Bash</span><pre><span></span><code><span id="__span-5-1">sudo<span class="w"> </span>systemctl<span class="w"> </span>start<span class="w"> </span>postgresql
+</span><span id="__span-5-2">sudo<span class="w"> </span>systemctl<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>postgresql
+</span></code></pre></div>
+<h2 id="redis-setup">Redis Setup</h2>
+<p>To install Redis, run the command below.</p>
+<div class="language-bash highlight"><span class="filename">Bash</span><pre><span></span><code><span id="__span-6-1">sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>redis-server
+</span></code></pre></div>
+<p>After installing Redis, we should ensure to change the <code>supervised</code> setting and add a password to our Redis service.</p>
+<p><div class="language-bash highlight"><span class="filename">Bash</span><pre><span></span><code><span id="__span-7-1">sudo<span class="w"> </span>nano<span class="w"> </span>/etc/redis/redis.conf
+</span></code></pre></div>
+ 
+In the <code>redis.conf</code> file, add the following content. Ensure to update the password to a new, secure password.</p>
+<div class="language-bash highlight"><span class="filename">Bash</span><pre><span></span><code><span id="__span-8-1">supervised<span class="w"> </span>systemd
+</span><span id="__span-8-2">requirepass<span class="w"> </span>s!!D%AriPB-MO~5
+</span></code></pre></div>
+<p>After completing our tasks, we ensure that the Redis service is running and is set to start automatically on reboot.</p>
+<div class="language-bash highlight"><span class="filename">Bash</span><pre><span></span><code><span id="__span-9-1">sudo<span class="w"> </span>systemctl<span class="w"> </span>restart<span class="w"> </span>redis
+</span><span id="__span-9-2">sudo<span class="w"> </span>systemctl<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>redis
+</span><span id="__span-9-3">sudo<span class="w"> </span>systemctl<span class="w"> </span>restart<span class="w"> </span>redis.service
+</span></code></pre></div>
+<h2 id="aptrs-django-apis-setup">APTRS Django APIs Setup</h2>
+<p>Run the below command to install Python and other requirements for the APTRS.</p>
+<div class="language-bash highlight"><span class="filename">Bash</span><pre><span></span><code><span id="__span-10-1">sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>python3-venv<span class="w"> </span>python3-dev<span class="w"> </span>libpq-dev<span class="w"> </span>weasyprint
+</span></code></pre></div>
+<p>It's better to separate the API and web service from other users on the machine. It's advisable to create a separate account for it.</p>
+<div class="language-bash highlight"><span class="filename">Bash</span><pre><span></span><code><span id="__span-11-1">sudo<span class="w"> </span>adduser<span class="w"> </span>aptrs
+</span><span id="__span-11-2">sudo<span class="w"> </span>usermod<span class="w"> </span>-aG<span class="w"> </span>sudo<span class="w"> </span>aptrs
+</span><span id="__span-11-3">usermod<span class="w"> </span>-a<span class="w"> </span>-G<span class="w"> </span>www-data<span class="w"> </span>aptrs
+</span><span id="__span-11-4">sudo<span class="w"> </span>su<span class="w"> </span>-<span class="w"> </span>aptrs
+</span></code></pre></div>
+<p>APTRS uses Python Poetry to manage dependencies, so we ensure its installation.</p>
+<div class="language-bash highlight"><span class="filename">Bash</span><pre><span></span><code><span id="__span-12-1">curl<span class="w"> </span>-sSL<span class="w"> </span>https://install.python-poetry.org<span class="w"> </span><span class="p">|</span><span class="w"> </span>python3<span class="w"> </span>-
+</span></code></pre></div>
+<p>By default, Poetry is not added to the user or system environment. Ensure you add it to the environment.</p>
+<div class="language-bash highlight"><span class="filename">Bash</span><pre><span></span><code><span id="__span-13-1"><span class="nb">export</span><span class="w"> </span><span class="nv">PATH</span><span class="o">=</span><span class="s2">&quot;/home/aptrs/.local/bin:</span><span class="nv">$PATH</span><span class="s2">&quot;</span>
+</span></code></pre></div>
+<p>Once completed, we can download the APTRS from GitHub, install the dependencies, and copy the example .env file.</p>
+<p><div class="language-bash highlight"><span class="filename">Bash</span><pre><span></span><code><span id="__span-14-1"><span class="nb">cd</span><span class="w"> </span>/home/aptrs
+</span><span id="__span-14-2">git<span class="w"> </span>clone<span class="w"> </span>https://github.com/APTRS/APTRS
+</span><span id="__span-14-3"><span class="nb">cd</span><span class="w"> </span>APTRS
+</span><span id="__span-14-4">poetry<span class="w"> </span>install
+</span><span id="__span-14-5"><span class="nb">cd</span><span class="w"> </span>APTRS
+</span><span id="__span-14-6">cp<span class="w"> </span>env.example<span class="w"> </span>.env<span class="w">  </span><span class="c1"># The .env file should be located in the same directory as the manage.py file.</span>
+</span></code></pre></div>
+After obtaining the <code>.env</code> file from the demo environment file, ensure that you update it with the following details: the password for Redis, the PostgreSQL hostname or IP address, the Redis hostname or IP address, the secret key, and any other necessary information. It's important to review all the details in the <code>.env</code> file carefully. For more information on configuring the <code>.env</code> file and the various data it contains, please refer to the <strong><a href="/installation/env/">Environment Variables</a></strong> section.</p>
+<p>Few Important details for <strong>.env</strong> file:</p>
+<ul>
+<li>
+<p><strong>WHITELIST_IP:</strong> Add the server domain name if you're using one; if using a public IP, include that as well. For local network access, add the server's internal IP to the whitelist. Specify the protocol (HTTP or HTTPS) and use Nginx instead of the Django default port (8000). You don’t need to specify a port if using HTTP on 80 or HTTPS on 443. If using S3 buckets, include the bucket URL.</p>
+</li>
+<li>
+<p><strong>CORS_ORIGIN:</strong> Since the frontend and backend will be on the same server, simply allow the server's public or local IP, along with the appropriate protocol and port, if necessary. Both frontend and backend should be accessible via the same domain or IP using Nginx reverse proxy. For more details, check the <strong><a href="/installation/frontend/">Frontend</a></strong> documentation.</p>
+</li>
+<li>
+<p><strong>ALLOWED_HOST:</strong> Set this only for the server's domain name or public/internal IP, based on how APTRS will be accessed.</p>
+</li>
+<li>
+<p><strong>SECRET_KEY:</strong> Make sure to update it with a secure key; the same key will be used to generate a JWT token.</p>
+</li>
+</ul>
+<p>From the directory where manage.py is located, run the command below.</p>
+<div class="language-bash highlight"><span class="filename">Bash</span><pre><span></span><code><span id="__span-15-1">poetry<span class="w"> </span>shell
+</span><span id="__span-15-2">python3<span class="w"> </span>manage.py<span class="w"> </span>makemigrations<span class="w"> </span>accounts
+</span><span id="__span-15-3">python3<span class="w"> </span>manage.py<span class="w"> </span>makemigrations<span class="w"> </span>configapi
+</span><span id="__span-15-4">python3<span class="w"> </span>manage.py<span class="w"> </span>makemigrations<span class="w"> </span>customers
+</span><span id="__span-15-5">python3<span class="w"> </span>manage.py<span class="w"> </span>makemigrations<span class="w"> </span>project
+</span><span id="__span-15-6">python3<span class="w"> </span>manage.py<span class="w"> </span>makemigrations<span class="w"> </span>vulnerability
+</span><span id="__span-15-7">python3<span class="w"> </span>manage.py<span class="w"> </span>makemigrations
+</span><span id="__span-15-8">python3<span class="w"> </span>manage.py<span class="w"> </span>migrate
+</span><span id="__span-15-9">python3<span class="w"> </span>manage.py<span class="w"> </span>first_setup
+</span><span id="__span-15-10"><span class="nb">exit</span>
+</span></code></pre></div>
+<p>Once we have completed the required setup, we need to start the server. APTRS uses Gunicorn for this purpose, which should already be installed through the steps we have completed so far.</p>
+<h3 id="setting-up-gunicorn-service">Setting up Gunicorn Service</h3>
+<p>First, we need to locate the full path of Gunicorn in our Poetry virtual environment:</p>
+<div class="language-bash highlight"><span class="filename">Bash</span><pre><span></span><code><span id="__span-16-1">$&gt;<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>/home/aptrs/APTRS
+</span><span id="__span-16-2">$&gt;<span class="w"> </span>poetry<span class="w"> </span>run<span class="w"> </span>which<span class="w"> </span>gunicorn
+</span><span id="__span-16-3">
+</span><span id="__span-16-4"><span class="c1">## Example output (your path will likely be different):</span>
+</span><span id="__span-16-5">/home/aptrs/.cache/pypoetry/virtualenvs/aptrs-h1P6HTQN-py3.12/bin/gunicorn
+</span></code></pre></div>
+<div class="admonition tip">
+<p class="admonition-title">Important</p>
+<p>Make note of this path as you'll need it in the next step when configuring the Gunicorn service.</p>
+</div>
+<p>Once we have the full path for Gunicorn, we can set up the <code>gunicorn.service</code> file:</p>
+<div class="language-bash highlight"><span class="filename">Bash</span><pre><span></span><code><span id="__span-17-1">sudo<span class="w"> </span>nano<span class="w"> </span>/etc/systemd/system/gunicorn.service
+</span></code></pre></div>
+<p>In the nano file editor, paste the following configuration. <strong>Remember to replace the <code>ExecStart</code> path with the full Gunicorn path you found in the previous step</strong>:</p>
+<div class="language-bash highlight"><span class="filename">Bash</span><pre><span></span><code><span id="__span-18-1"><span class="o">[</span>Unit<span class="o">]</span>
+</span><span id="__span-18-2"><span class="nv">Description</span><span class="o">=</span>gunicorn<span class="w"> </span>daemon<span class="w"> </span>to<span class="w"> </span>serve<span class="w"> </span>APTRS
+</span><span id="__span-18-3"><span class="nv">Requires</span><span class="o">=</span>gunicorn.socket
+</span><span id="__span-18-4"><span class="nv">After</span><span class="o">=</span>network.target
+</span><span id="__span-18-5">
+</span><span id="__span-18-6"><span class="o">[</span>Service<span class="o">]</span>
+</span><span id="__span-18-7"><span class="nv">User</span><span class="o">=</span>aptrs
+</span><span id="__span-18-8"><span class="nv">Group</span><span class="o">=</span>www-data
+</span><span id="__span-18-9"><span class="nv">WorkingDirectory</span><span class="o">=</span>/home/aptrs/APTRS/APTRS
+</span><span id="__span-18-10"><span class="c1"># Replace this path with your actual Gunicorn path from the previous step</span>
+</span><span id="__span-18-11"><span class="nv">ExecStart</span><span class="o">=</span>/home/aptrs/.cache/pypoetry/virtualenvs/aptrs-h1P6HTQN-py3.12/bin/gunicorn<span class="w"> </span>--workers<span class="w"> </span><span class="m">3</span><span class="w"> </span>--access-logfile<span class="w"> </span>-<span class="w"> </span>--bind<span class="w"> </span>unix:/run/gunicorn.sock<span class="w"> </span>APTRS.wsgi:application
+</span><span id="__span-18-12">
+</span><span id="__span-18-13"><span class="o">[</span>Install<span class="o">]</span>
+</span><span id="__span-18-14"><span class="nv">WantedBy</span><span class="o">=</span>multi-user.target
+</span></code></pre></div>
+<p>Next, we need to set up the Gunicorn socket file:</p>
+<div class="language-bash highlight"><span class="filename">Bash</span><pre><span></span><code><span id="__span-19-1">sudo<span class="w"> </span>nano<span class="w"> </span>/etc/systemd/system/gunicorn.socket
+</span></code></pre></div>
+<p>Add the following configuration to the socket file:</p>
+<div class="language-bash highlight"><span class="filename">Bash</span><pre><span></span><code><span id="__span-20-1"><span class="o">[</span>Unit<span class="o">]</span>
+</span><span id="__span-20-2"><span class="nv">Description</span><span class="o">=</span>gunicorn<span class="w"> </span>socket
+</span><span id="__span-20-3">
+</span><span id="__span-20-4"><span class="o">[</span>Socket<span class="o">]</span>
+</span><span id="__span-20-5"><span class="nv">ListenStream</span><span class="o">=</span>/run/gunicorn.sock
+</span><span id="__span-20-6">
+</span><span id="__span-20-7"><span class="o">[</span>Install<span class="o">]</span>
+</span><span id="__span-20-8"><span class="nv">WantedBy</span><span class="o">=</span>sockets.target
+</span></code></pre></div>
+<h3 id="starting-and-enabling-gunicorn-services">Starting and Enabling Gunicorn Services</h3>
+<p>Now that everything is configured, we can start and enable the Gunicorn services:</p>
+<div class="language-bash highlight"><span class="filename">Bash</span><pre><span></span><code><span id="__span-21-1">sudo<span class="w"> </span>systemctl<span class="w"> </span>start<span class="w"> </span>gunicorn.socket
+</span><span id="__span-21-2">sudo<span class="w"> </span>systemctl<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>gunicorn.socket
+</span><span id="__span-21-3">sudo<span class="w"> </span>systemctl<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>gunicorn
+</span><span id="__span-21-4">sudo<span class="w"> </span>systemctl<span class="w"> </span>daemon-reload
+</span><span id="__span-21-5">sudo<span class="w"> </span>systemctl<span class="w"> </span>restart<span class="w"> </span>gunicorn
+</span></code></pre></div>
+<h3 id="verifying-the-api-service">Verifying the API Service</h3>
+<p>To verify that the APTRS APIs are operational, run this command:</p>
+<div class="language-bash highlight"><span class="filename">Bash</span><pre><span></span><code><span id="__span-22-1">curl<span class="w"> </span>--unix-socket<span class="w"> </span>/run/gunicorn.sock<span class="w"> </span>localhost/api/config/ping/
+</span></code></pre></div>
+<p>You should receive a success response like this:
+<div class="language-json highlight"><span class="filename">JSON</span><pre><span></span><code><span id="__span-23-1"><span class="p">{</span><span class="nt">&quot;status&quot;</span><span class="p">:</span><span class="s2">&quot;ok&quot;</span><span class="p">,</span><span class="nt">&quot;message&quot;</span><span class="p">:</span><span class="s2">&quot;Server is up and running!&quot;</span><span class="p">}</span>
+</span></code></pre></div></p>
+<div class="admonition tip">
+<p class="admonition-title">Troubleshooting</p>
+<p>If you encounter any issues, check the status of the Gunicorn socket and service:
+<div class="language-bash highlight"><span class="filename">Bash</span><pre><span></span><code><span id="__span-24-1">sudo<span class="w"> </span>systemctl<span class="w"> </span>status<span class="w"> </span>gunicorn.socket
+</span><span id="__span-24-2">sudo<span class="w"> </span>systemctl<span class="w"> </span>status<span class="w"> </span>gunicorn
+</span></code></pre></div>
+Look for any error messages in the output to help diagnose the problem.</p>
+</div>
+<h2 id="frontend-vitejs-setup">Frontend ViteJs Setup</h2>
+<p>This section covers the installation and configuration of the APTRS frontend built with Vite.js.</p>
+<h3 id="installing-nodejs-and-npm">Installing Node.js and NPM</h3>
+<p>First, install Node.js and NPM:</p>
+<div class="language-bash highlight"><span class="filename">Bash</span><pre><span></span><code><span id="__span-25-1">sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>nodejs
+</span><span id="__span-25-2">sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>npm
+</span></code></pre></div>
+<h3 id="configuring-the-frontend-environment">Configuring the Frontend Environment</h3>
+<p>After installing NPM and Node.js, we need to create a <code>.env</code> file for the frontend that points to our backend API:</p>
+<div class="language-bash highlight"><span class="filename">Bash</span><pre><span></span><code><span id="__span-26-1"><span class="nb">cd</span><span class="w"> </span>/home/aptrs/APTRS/frontend
+</span><span id="__span-26-2">cp<span class="w"> </span>env.example<span class="w"> </span>.env
+</span><span id="__span-26-3">nano<span class="w"> </span>.env
+</span></code></pre></div>
+<p>In the Nano editor, modify the content to the following:</p>
+<div class="language-bash highlight"><span class="filename">Bash</span><pre><span></span><code><span id="__span-27-1"><span class="nv">VITE_APP_API_URL</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>/api/
+</span><span id="__span-27-2"><span class="nv">VITE_APP_ENV</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>production
+</span></code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">API URL Configuration</p>
+<p>We're using <code>/api/</code> as the backend URL since both the frontend and backend will be served from the same domain through Nginx's reverse proxy. For more details on frontend configuration, see the <strong><a href="/installation/frontend/">Frontend</a></strong> documentation.</p>
+</div>
+<p>Now that we have configured the env file, we can install the required packages for the frontend with the command below:</p>
+<div class="language-bash highlight"><span class="filename">Bash</span><pre><span></span><code><span id="__span-28-1">npm<span class="w"> </span>install
+</span></code></pre></div>
+<p>Once we have all the packages installed, we can build the frontend using the command below.</p>
+<div class="language-bash highlight"><span class="filename">Bash</span><pre><span></span><code><span id="__span-29-1">npm<span class="w"> </span>run<span class="w"> </span>build
+</span></code></pre></div>
+<p>Once the build is completed, we can see all the front-end build at the directory below:</p>
+<div class="language-bash highlight"><span class="filename">Bash</span><pre><span></span><code><span id="__span-30-1"><span class="nb">cd</span><span class="w"> </span>/home/aptrs/APTRS/frontend/dist
+</span><span id="__span-30-2">ls
+</span><span id="__span-30-3">
+</span><span id="__span-30-4">android-chrome-192x192.png<span class="w">  </span>assets<span class="w">             </span>favicon.ico<span class="w">       </span>logo.svg<span class="w">       </span>stats.html
+</span><span id="__span-30-5">android-chrome-512x512.png<span class="w">  </span>favicon-16x16.png<span class="w">  </span>hero-desktop.png<span class="w">  </span>manifest.json
+</span><span id="__span-30-6">apple-touch-icon.png<span class="w">        </span>favicon-32x32.png<span class="w">  </span>index.html<span class="w">        </span>robots.txt
+</span></code></pre></div>
+<h2 id="nginx-setup">Nginx Setup</h2>
+<p>We have everything set up, and our APIs are running with Gunicorn. Now, we need to configure the frontend to serve static files with Nginx and connect Gunicorn to Nginx. To get started, we first need to install Nginx using the command below:</p>
+<div class="language-bash highlight"><span class="filename">Bash</span><pre><span></span><code><span id="__span-31-1">sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>nginx
+</span></code></pre></div>
+<p>Since our frontend and backend are in the user directory, we will encounter a permission error from Nginx. To resolve this, we will grant access to the www-data user group with the command below:</p>
+<div class="language-bash highlight"><span class="filename">Bash</span><pre><span></span><code><span id="__span-32-1">sudo<span class="w"> </span>chown<span class="w"> </span>-R<span class="w"> </span>aptrs:www-data<span class="w"> </span>/home/aptrs
+</span></code></pre></div>
+<p>To complete the setup, we can assume the domain name for our web server is <code>demo.aptrs.com</code>. The configuration below will have the nginx configuration files or folder names based on the domain, which users should replace with their actual domain.</p>
+<p>Next, we will create a new server block in the Nginx sites-available directory using the following command:</p>
+<div class="language-bash highlight"><span class="filename">Bash</span><pre><span></span><code><span id="__span-33-1">sudo<span class="w"> </span>nano<span class="w"> </span>/etc/nginx/sites-available/demo.aptrs.com
+</span></code></pre></div>
+<p>Paste the Below nginx configuration,</p>
+<div class="language-bash highlight"><span class="filename">Bash</span><pre><span></span><code><span id="__span-34-1"><span class="c1"># HTTP server configuration</span>
+</span><span id="__span-34-2">server<span class="w"> </span><span class="o">{</span>
+</span><span id="__span-34-3"><span class="w">    </span>listen<span class="w"> </span><span class="m">80</span><span class="p">;</span>
+</span><span id="__span-34-4"><span class="w">    </span>server_name<span class="w"> </span>demo.aptrs.com<span class="p">;</span><span class="w">  </span><span class="c1"># Replace with your domain</span>
+</span><span id="__span-34-5">
+</span><span id="__span-34-6"><span class="w">    </span>server_tokens<span class="w"> </span>off<span class="p">;</span>
+</span><span id="__span-34-7"><span class="w">    </span>client_max_body_size<span class="w"> </span>100M<span class="p">;</span>
+</span><span id="__span-34-8">
+</span><span id="__span-34-9">
+</span><span id="__span-34-10">
+</span><span id="__span-34-11"><span class="w">    </span><span class="c1">### Host Validation - &gt; Update according to your need</span>
+</span><span id="__span-34-12"><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="o">(</span><span class="w"> </span><span class="nv">$host</span><span class="w"> </span>!~*<span class="w"> </span>^<span class="o">(</span>demo.aptrs.com<span class="o">)</span>$<span class="w"> </span><span class="o">)</span><span class="w"> </span><span class="o">{</span>
+</span><span id="__span-34-13"><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="m">444</span><span class="p">;</span>
+</span><span id="__span-34-14"><span class="w"> </span><span class="o">}</span>
+</span><span id="__span-34-15">
+</span><span id="__span-34-16"><span class="w">    </span><span class="c1"># Pass all /api/* to the Django backend</span>
+</span><span id="__span-34-17"><span class="w">    </span>location<span class="w"> </span>/api/<span class="w"> </span><span class="o">{</span>
+</span><span id="__span-34-18"><span class="w">        </span>proxy_pass<span class="w"> </span>http://unix:/run/gunicorn.sock<span class="p">;</span>
+</span><span id="__span-34-19"><span class="w">        </span>proxy_set_header<span class="w"> </span>X-Forwarded-For<span class="w"> </span><span class="nv">$proxy_add_x_forwarded_for</span><span class="p">;</span>
+</span><span id="__span-34-20"><span class="w">        </span>proxy_set_header<span class="w"> </span>X-Forwarded-Proto<span class="w"> </span><span class="nv">$scheme</span><span class="p">;</span>
+</span><span id="__span-34-21"><span class="w">        </span>proxy_set_header<span class="w"> </span>Host<span class="w"> </span><span class="nv">$host</span><span class="p">;</span>
+</span><span id="__span-34-22"><span class="w">        </span>proxy_redirect<span class="w"> </span>off<span class="p">;</span>
+</span><span id="__span-34-23"><span class="w"> </span><span class="o">}</span>
+</span><span id="__span-34-24">
+</span><span id="__span-34-25"><span class="w">    </span><span class="c1"># Home page for frontend</span>
+</span><span id="__span-34-26"><span class="w">    </span>location<span class="w"> </span>/<span class="w"> </span><span class="o">{</span>
+</span><span id="__span-34-27"><span class="w">    </span>root<span class="w"> </span>/home/aptrs/APTRS/frontend/dist<span class="p">;</span>
+</span><span id="__span-34-28"><span class="w">    </span>index<span class="w"> </span>index.html<span class="w"> </span>index.htm<span class="p">;</span>
+</span><span id="__span-34-29"><span class="w">    </span>try_files<span class="w"> </span><span class="nv">$uri</span><span class="w"> </span><span class="nv">$uri</span>/<span class="w"> </span>/index.html<span class="w"> </span><span class="o">=</span><span class="m">404</span><span class="p">;</span>
+</span><span id="__span-34-30"><span class="w"> </span><span class="o">}</span>
+</span><span id="__span-34-31"><span class="w">    </span><span class="c1">## Server Static from Django over nginx</span>
+</span><span id="__span-34-32"><span class="w">    </span>location<span class="w"> </span>/static/<span class="w"> </span><span class="o">{</span>
+</span><span id="__span-34-33"><span class="w">        </span><span class="nb">alias</span><span class="w"> </span>/home/aptrs/APTRS/APTRS/static/<span class="p">;</span>
+</span><span id="__span-34-34"><span class="w"> </span><span class="o">}</span>
+</span><span id="__span-34-35">
+</span><span id="__span-34-36"><span class="w">    </span><span class="c1"># Blocked, accessing the whole media folder may lead to access to sensitive images like POC images,</span>
+</span><span id="__span-34-37"><span class="w">    </span><span class="c1">#location /media/ {</span>
+</span><span id="__span-34-38"><span class="w">    </span><span class="c1">#    alias /home/aptrs/APTRS/APTRS/media/;  # Path to your media files</span>
+</span><span id="__span-34-39"><span class="w">    </span><span class="c1">#}</span>
+</span><span id="__span-34-40">
+</span><span id="__span-34-41"><span class="w">    </span><span class="nv">location</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>/favicon.ico<span class="w"> </span><span class="o">{</span>
+</span><span id="__span-34-42"><span class="w">    </span><span class="nb">alias</span><span class="w"> </span>/home/aptrs/APTRS/frontend/dist/favicon.ico<span class="p">;</span>
+</span><span id="__span-34-43"><span class="w">    </span>access_log<span class="w"> </span>off<span class="p">;</span>
+</span><span id="__span-34-44"><span class="w">    </span>log_not_found<span class="w"> </span>off<span class="p">;</span>
+</span><span id="__span-34-45"><span class="w">   </span>
+</span><span id="__span-34-46"><span class="w"> </span><span class="o">}</span>
+</span><span id="__span-34-47">
+</span><span id="__span-34-48"><span class="w">    </span><span class="c1">## Server user profile photo</span>
+</span><span id="__span-34-49"><span class="w">    </span>location<span class="w"> </span>/media/profile/<span class="w"> </span><span class="o">{</span>
+</span><span id="__span-34-50"><span class="w">        </span><span class="nb">alias</span><span class="w"> </span>/home/aptrs/APTRS/APTRS/media/profile/<span class="p">;</span><span class="w">  </span><span class="c1"># Path to your media files</span>
+</span><span id="__span-34-51"><span class="w"> </span><span class="o">}</span>
+</span><span id="__span-34-52">
+</span><span id="__span-34-53"><span class="w">    </span><span class="c1">## Server Company Logo Images</span>
+</span><span id="__span-34-54"><span class="w">    </span>location<span class="w"> </span>/media/company/<span class="w"> </span><span class="o">{</span>
+</span><span id="__span-34-55"><span class="w">        </span><span class="nb">alias</span><span class="w"> </span>/home/aptrs/APTRS/APTRS/media/company/<span class="p">;</span><span class="w">  </span><span class="c1"># Path to your media files</span>
+</span><span id="__span-34-56"><span class="w"> </span><span class="o">}</span>
+</span><span id="__span-34-57">
+</span><span id="__span-34-58"><span class="w">    </span><span class="c1">## HTML Report design Images like background images</span>
+</span><span id="__span-34-59"><span class="w">    </span>location<span class="w"> </span>/media/report/<span class="w"> </span><span class="o">{</span>
+</span><span id="__span-34-60"><span class="w">        </span><span class="nb">alias</span><span class="w"> </span>/home/aptrs/APTRS/APTRS/media/report/<span class="p">;</span><span class="w">  </span><span class="c1"># Path to your media files</span>
+</span><span id="__span-34-61"><span class="w"> </span><span class="o">}</span>
+</span><span id="__span-34-62">
+</span><span id="__span-34-63"><span class="w">    </span>access_log<span class="w"> </span>/var/log/nginx/APTRS_access.log<span class="p">;</span><span class="w">  </span><span class="c1"># Path to access log file</span>
+</span><span id="__span-34-64"><span class="w">    </span>error_log<span class="w"> </span>/var/log/nginx/APTRS_error.log<span class="p">;</span><span class="w">   </span><span class="c1"># Path to the error log file</span>
+</span><span id="__span-34-65"><span class="o">}</span>
+</span></code></pre></div>
+<p>Let’s enable the file by creating a link from it to the sites-enabled directory, which Nginx reads from during startup:</p>
+<div class="language-bash highlight"><span class="filename">Bash</span><pre><span></span><code><span id="__span-35-1">sudo<span class="w"> </span>ln<span class="w"> </span>-s<span class="w"> </span>/etc/nginx/sites-available/demo.aptrs.com<span class="w"> </span>/etc/nginx/sites-enabled/
+</span></code></pre></div>
+<p>Let's verify if any error from the nginx with</p>
+<p><div class="language-bash highlight"><span class="filename">Bash</span><pre><span></span><code><span id="__span-36-1">sudo<span class="w"> </span>nginx<span class="w"> </span>-t
+</span></code></pre></div>
+If there are no errors we can start the nginx</p>
+<div class="language-bash highlight"><span class="filename">Bash</span><pre><span></span><code><span id="__span-37-1">sudo<span class="w"> </span>systemctl<span class="w"> </span>restart<span class="w"> </span>nginx
+</span></code></pre></div>
+<div class="admonition success">
+<p class="admonition-title">Installation Complete</p>
+<p>At this point, your APTRS installation should be complete and accessible via your domain or IP address. You can navigate to http://your-domain.com (or https:// if you've set up SSL) in your browser to access the APTRS interface.</p>
+</div>
+<h3 id="https-certificate">HTTPS Certificate</h3>
+<p>For production environments, it's highly recommended to secure your site with HTTPS. We can use Let's Encrypt and Certbot to obtain a free SSL certificate:</p>
+<div class="language-bash highlight"><span class="filename">Bash</span><pre><span></span><code><span id="__span-38-1">sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>certbot<span class="w"> </span>python3-certbot-nginx
+</span><span id="__span-38-2">sudo<span class="w"> </span>certbot<span class="w"> </span>--nginx<span class="w"> </span>-d<span class="w"> </span>demo.aptrs.com
+</span><span id="__span-38-3">sudo<span class="w"> </span>systemctl<span class="w"> </span>status<span class="w"> </span>certbot.timer
+</span><span id="__span-38-4">sudo<span class="w"> </span>certbot<span class="w"> </span>renew<span class="w"> </span>--dry-run
+</span></code></pre></div>
+<p>The certbot utility will guide you through the process of obtaining and installing the certificate. It will also modify your Nginx configuration to use HTTPS and redirect HTTP traffic to HTTPS.</p>
+<div class="admonition tip">
+<p class="admonition-title">Auto-renewal</p>
+<p>Certbot automatically adds a timer to renew certificates before they expire. You can verify this is working with the <code>sudo systemctl status certbot.timer</code> command.</p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://twitter.com/ano_f_" target="_blank" rel="noopener" title="twitter.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/Anof-cyber/" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8M97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://www.linkedin.com/in/sourav-kalal" target="_blank" rel="noopener" title="www.linkedin.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3M135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5m282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://medium.com/@Ano_F_" target="_blank" rel="noopener" title="medium.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M180.5 74.262C80.813 74.262 0 155.633 0 256s80.819 181.738 180.5 181.738S361 356.373 361 256 280.191 74.262 180.5 74.262m288.25 10.646c-49.845 0-90.245 76.619-90.245 171.095s40.406 171.1 90.251 171.1 90.251-76.619 90.251-171.1H559c0-94.503-40.4-171.095-90.248-171.095Zm139.506 17.821c-17.526 0-31.735 68.628-31.735 153.274s14.2 153.274 31.735 153.274S640 340.631 640 256c0-84.649-14.215-153.271-31.742-153.271Z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../..", "features": ["toc.integrate", "toc.follow", "navigation.path", "navigation.indexes", "navigation.tabs", "navigation.tabs.sticky", "navigation.path", "search.suggest", "navigation.sections", "navigation.tracking", "navigation.instant", "content.tabs.link"], "search": "../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"provider": "mike"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.13a4f30d.min.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.2/highlight.min.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/9000.0.1/prism.min.js"></script>
+      
+    
+  <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(() => { lightbox.reload() });
+</script></body>
+</html>
